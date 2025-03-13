@@ -39,6 +39,9 @@ const SelectedPage = () => {
 
   return (
     <div>
+      <Link to="/" className="back-button">
+        <button>Повернутися до рецептів</button>
+      </Link>
       <h1>Улюблені рецепти</h1>
 
       {favoriteRecipes.length === 0 && <p>Немає улюблених рецептів.</p>}
