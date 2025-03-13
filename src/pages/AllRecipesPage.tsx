@@ -30,14 +30,11 @@ const AllRecipesPage = () => {
   }, [meals]);
 
   const handleToggleFavorite = async (mealId: string) => {
-    // Перевіряємо, чи є рецепт у улюблених
     const existingRecipe = favoriteRecipes.find((r) => r.idMeal === mealId);
 
     if (existingRecipe) {
-      // Якщо вже є, видаляємо його з улюблених
       dispatch(removeFavorite(mealId));
     } else {
-      // Якщо ще немає, отримуємо його деталі і додаємо до улюблених
       const mealDetails = await getMealDetails(mealId);
       if (mealDetails) {
         dispatch(addFavorite(mealDetails));
@@ -56,8 +53,6 @@ const AllRecipesPage = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   const totalPages = Math.ceil(mealsRendered.length / itemsPerPage);
-
-  console.log("currentMeals", currentMeals);
 
   const pageNumbers =
     totalPages <= 10

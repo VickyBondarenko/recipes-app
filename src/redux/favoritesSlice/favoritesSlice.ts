@@ -42,7 +42,7 @@ const favoritesSlice = createSlice({
   reducers: {
     addFavorite: (state, action: PayloadAction<Meal>) => {
       const meal = action.payload;
-      // Додаємо рецепт до улюблених
+
       if (
         !state.favoriteRecipes.find((recipe) => recipe.idMeal === meal.idMeal)
       ) {
@@ -50,7 +50,6 @@ const favoritesSlice = createSlice({
       }
     },
     removeFavorite: (state, action: PayloadAction<string>) => {
-      // Видаляємо рецепт з улюблених за ID
       state.favoriteRecipes = state.favoriteRecipes.filter(
         (recipe) => recipe.idMeal !== action.payload
       );
