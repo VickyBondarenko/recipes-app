@@ -59,14 +59,14 @@ const AllRecipesPage = () => {
       ? [...Array(totalPages)].map((_, index) => index + 1)
       : [1, 2, 3, 4, 5, 6, 7, "...", totalPages];
 
-  if (isLoading) return <p>Завантаження...</p>;
-  if (error) return <p>Помилка при завантаженні рецептів!</p>;
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading recipes!</p>;
 
   return (
     <div>
       <CategoryFilter setMeals={setMealsRendered} />
-      <Link to="/favorites">Перейти до обраних</Link>
-      <h1>Рецепти</h1>
+      <Link to="/favorites">Go to favorites</Link>
+      <h1>Recipes</h1>
 
       <div>
         {currentMeals.map((meal) => (
@@ -80,8 +80,8 @@ const AllRecipesPage = () => {
             </Link>
             <button onClick={() => handleToggleFavorite(meal.idMeal)}>
               {isFavorite(meal.idMeal)
-                ? "Видалити з улюблених"
-                : "Додати до улюблених"}
+                ? "Remove from favorites"
+                : "Add to favorites"}
             </button>
           </div>
         ))}
@@ -92,7 +92,7 @@ const AllRecipesPage = () => {
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          {"<"} Попередня
+          {"<"}
         </button>
 
         {pageNumbers.map((number, index) => (
@@ -114,7 +114,7 @@ const AllRecipesPage = () => {
           onClick={() => paginate(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
-          Наступна {">"}
+          {">"}
         </button>
       </div>
     </div>

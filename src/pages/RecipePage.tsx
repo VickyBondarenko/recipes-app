@@ -26,7 +26,7 @@ const RecipePage: React.FC = () => {
   return (
     <div className="recipe-detail">
       <Link to="/" className="back-button">
-        <button>Повернутися до рецептів</button>
+        <button>Back to recipes</button>
       </Link>
       <h2>{meal.strMeal}</h2>
       <img src={meal.strMealThumb} alt={meal.strMeal} />

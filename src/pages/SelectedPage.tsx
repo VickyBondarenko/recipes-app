@@ -40,11 +40,11 @@ const SelectedPage = () => {
   return (
     <div>
       <Link to="/" className="back-button">
-        <button>Повернутися до рецептів</button>
+        <button>Back to recipes</button>
       </Link>
-      <h1>Улюблені рецепти</h1>
+      <h1>Favorite recipes</h1>
 
-      {favoriteRecipes.length === 0 && <p>Немає улюблених рецептів.</p>}
+      {favoriteRecipes.length === 0 && <p>No favorite recipes.</p>}
 
       <div style={{ display: "flex", gap: "20px" }}>
         <div style={{ flex: 1 }}>
@@ -55,14 +55,14 @@ const SelectedPage = () => {
                 <h2>{meal.strMeal}</h2>
               </Link>
               <button onClick={() => handleRemoveFavorite(meal.idMeal)}>
-                Видалити з улюблених
+                Remove from favorites
               </button>
             </div>
           ))}
         </div>
 
         <div style={{ flex: 1 }}>
-          <h3>Усі інгредієнти з улюблених рецептів:</h3>
+          <h3>All the ingredients from your favorite recipes:</h3>
           <ul>
             {allIngredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>
