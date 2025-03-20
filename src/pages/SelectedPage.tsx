@@ -11,16 +11,13 @@ const SelectedPage = () => {
   );
 
   const getIngredients = (meal: any) => {
-    return [...Array(20)]
-      .map((_, index) => {
-        const ingredient = meal[`strIngredient${index + 1}`];
-        const measure = meal[`strMeasure${index + 1}`];
-        if (ingredient && ingredient.trim() !== "") {
-          return `${ingredient} - ${measure || ""}`;
-        }
-        return null;
-      })
-      .filter(Boolean);
+    return Object.keys(meal)
+      .filter((key) => key.startsWith("strIngredient") && meal[key]?.trim())
+      .map((key) => {
+        const index = key.replace("strIngredient", "");
+        const measure = meal[`strMeasure${index}`] || "";
+        return `${meal[key]} - ${measure}`;
+      });
   };
 
   const allIngredients = favoriteRecipes.reduce((acc: string[], meal) => {
